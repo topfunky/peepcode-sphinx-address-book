@@ -6,5 +6,6 @@ class Contact < ActiveRecord::Base
     indexes street_address, city, country, postal_code
     
     has state_id
+    has latitude, longitude
   end
 end
