@@ -15,4 +15,11 @@ if (map_element) {
   // Add basic map controls
   map.addControl(new GMapTypeControl());
   map.addControl(new GLargeMapControl());
+  
+  // Catch any map movements and store the new centre position
+  GEvent.addListener(map, "moveend", function() {
+    var centre = map.getCenter();
+    document.getElementById("lat").value = centre.lat();
+    document.getElementById("lon").value = centre.lng();
+  });
 }
