@@ -6,8 +6,9 @@ class ContactsController < ApplicationController
 
     @contacts = Contact.search(
       (params[:search] || ""),
-      :with => {:state_id => params[:state_id].to_i},
-      :page => (params[:page] || 1)
+      :with   => {:state_id => params[:state_id].to_i},
+      :page   => (params[:page] || 1),
+      :order  => :name
     )
 
     respond_to do |format|
