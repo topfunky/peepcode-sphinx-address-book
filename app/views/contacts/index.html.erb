@@ -1,34 +1,44 @@
-<h1>Listing contacts</h1>
+<h1>Search Contacts</h1>
 
-<table>
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Street address</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Country</th>
-    <th>Postal code</th>
-  </tr>
+<% form_tag "", :method => :get do -%>
+  <p>
+    <%= text_field_tag :search %>
+    <%= submit_tag "Search" %>
+  </p>
+<% end -%>
 
-<% for contact in @contacts %>
-  <tr>
-    <td><%=h contact.first_name %></td>
-    <td><%=h contact.last_name %></td>
-    <td><%=h contact.street_address %></td>
-    <td><%=h contact.city %></td>
-    <td><%=h contact.state %></td>
-    <td><%=h contact.country %></td>
-    <td><%=h contact.postal_code %></td>
-    <td><%= link_to 'Show', contact %></td>
-    <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-    <td><%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<% unless @contacts.empty? %>
+  <table>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Street address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Country</th>
+      <th>Postal code</th>
+    </tr>
+
+  <% for contact in @contacts %>
+    <tr>
+      <td><%= h contact.first_name %></td>
+      <td><%= h contact.last_name %></td>
+      <td><%= h contact.street_address %></td>
+      <td><%= h contact.city %></td>
+      <td><%= h contact.state %></td>
+      <td><%= h contact.country %></td>
+      <td><%= h contact.postal_code %></td>
+      <td><%= link_to 'Show', contact %></td>
+      <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
+      <td><%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <br />
+
+  <%= will_paginate @contacts %>
 <% end %>
-</table>
-
 <br />
-
-<%= will_paginate @contacts %>
 
 <%= link_to 'New contact', new_contact_path %>
