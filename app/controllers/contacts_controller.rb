@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.xml
   def index
-    @contacts = Contact.find(:all)
+    @contacts = Contact.paginate :page => (params[:page] || 1)
 
     respond_to do |format|
       format.html # index.html.erb
