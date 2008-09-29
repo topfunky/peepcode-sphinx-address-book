@@ -16,6 +16,7 @@
 <% unless @contacts.empty? %>
   <table>
     <tr>
+      <th>Distance</th>
       <th>First name</th>
       <th>Last name</th>
       <th>Street address</th>
@@ -25,8 +26,9 @@
       <th>Postal code</th>
     </tr>
 
-  <% for contact in @contacts %>
+  <% @contacts.each_with_geodist do |contact, distance| %>
     <tr>
+      <td><%= number_with_delimiter number_with_precision(distance, 0) %></td>
       <td><%= h contact.first_name %></td>
       <td><%= h contact.last_name %></td>
       <td><%= h contact.street_address %></td>
