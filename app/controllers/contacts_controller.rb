@@ -8,7 +8,11 @@ class ContactsController < ApplicationController
       (params[:search] || ""),
       :with   => {:state_id => params[:state_id].to_i},
       :page   => (params[:page] || 1),
-      :order  => :name
+      :geo    => [
+        degrees_to_radians(params[:lat].to_f),
+        degrees_to_radians(params[:lon].to_f)
+      ],
+      :order  => "@geodist ASC"
     )
 
     respond_to do |format|
@@ -88,5 +92,11 @@ class ContactsController < ApplicationController
       format.html { redirect_to(contacts_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def degrees_to_radians(degree)
+    degree * Math::PI / 180
   end
 end
