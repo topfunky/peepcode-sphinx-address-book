@@ -7,5 +7,7 @@ class Contact < ActiveRecord::Base
     
     has state_id
     has latitude, longitude
+    
+    set_property :delta => true
   end
 end
