@@ -3,6 +3,8 @@ class Contact < ActiveRecord::Base
   
   define_index do
     indexes [first_name, last_name], :as => :name
-    indexes street_address, city, state, country, postal_code
+    indexes street_address, city, country, postal_code
+    
+    has state_id
   end
 end
