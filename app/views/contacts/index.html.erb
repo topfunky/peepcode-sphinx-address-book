@@ -7,6 +7,8 @@
       options_from_collection_for_select(@states, "id", "name", params[:state_id].to_i) %>
     <%= submit_tag "Search" %>
   </p>
+  
+  <div id="map" style="width: 500px; height: 350px"></div>
 <% end -%>
 
 <% unless @contacts.empty? %>
