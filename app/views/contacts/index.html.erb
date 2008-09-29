@@ -2,7 +2,9 @@
 
 <% form_tag "", :method => :get do -%>
   <p>
-    <%= text_field_tag :search %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= select_tag :state_id,
+      options_from_collection_for_select(@states, "id", "name", params[:state_id].to_i) %>
     <%= submit_tag "Search" %>
   </p>
 <% end -%>
@@ -25,7 +27,7 @@
       <td><%= h contact.last_name %></td>
       <td><%= h contact.street_address %></td>
       <td><%= h contact.city %></td>
-      <td><%= h contact.state %></td>
+      <td><%= h contact.state.name %></td>
       <td><%= h contact.country %></td>
       <td><%= h contact.postal_code %></td>
       <td><%= link_to 'Show', contact %></td>
