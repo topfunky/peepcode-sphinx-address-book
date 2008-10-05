@@ -17,7 +17,7 @@
 development:
   adapter: mysql
   encoding: utf8
-  database: address-book_development
+  database: address_book_development
   username: root
   password:
   socket: /tmp/mysql.sock
@@ -28,7 +28,7 @@ development:
 test:
   adapter: mysql
   encoding: utf8
-  database: address-book_test
+  database: address_book_test
   username: root
   password:
   socket: /tmp/mysql.sock
@@ -36,7 +36,7 @@ test:
 production:
   adapter: mysql
   encoding: utf8
-  database: address-book_production
+  database: address_book_production
   username: root
   password: 
   socket: /tmp/mysql.sock
